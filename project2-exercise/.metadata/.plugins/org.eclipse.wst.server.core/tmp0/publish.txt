@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Apr 20 17:01:13 KRAT 2017
+org.eclipse.jst.jee.server\:Application=C\:\\xampp\\tomcat\\wtpwebapps\\Application
+org.eclipse.jst.jee.server\:Servlet=C\:\\xampp\\tomcat\\wtpwebapps\\Servlet
