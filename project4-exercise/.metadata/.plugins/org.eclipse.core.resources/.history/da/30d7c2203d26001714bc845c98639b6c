@@ -1,0 +1,82 @@
+package servletPackage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import info.Info;
+import student.Student;
+
+/**
+ * Servlet implementation class StudentServlet
+ */
+@WebServlet("/StudentServlet")
+@MultipartConfig
+public class StudentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	ArrayList<Student> students = new ArrayList<Student>();
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public StudentServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/StudentForm.jsp").forward(request, response);
+		Gson gson = new Gson();
+		
+		String name = request.getParameter("name");
+		
+		if (name != "") {
+			this.students.add(new Student(name, 1));
+			System.out.println(gson.toJson(this.students));
+			
+		}
+		
+//		request.setCharacterEncoding("utf8");
+//		response.setCharacterEncoding("utf8");
+//		response.setContentType("application/json");
+//		PrintWriter out = response.getWriter();
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf8");
+		response.setCharacterEncoding("utf8");
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		
+		Gson gson = new Gson();
+		Student[] students = {
+			new Student("aaa", 20),
+			new Student("bbb", 50)
+		};
+		
+		String name = request.getParameter("name");
+		
+		for (Student student : students) {
+			if ( student.getName().equalsIgnoreCase(name) ) {
+				out.println(gson.toJson(student));
+			}
+		};
+	}
+
+}

@@ -1,0 +1,23 @@
+package servletPackage;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+
+public class WebContext implements ServletContextListener {
+	
+	private ServletContext context = null;
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
+		// TODO Auto-generated method stub
+		context = sce.getServletContext();
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		// TODO Auto-generated method stub
+		context = sce.getServletContext();
+		System.out.println("ServletContextListener started");
+	}
+	
+}
