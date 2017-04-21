@@ -1,0 +1,60 @@
+package com.book.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.book.model.Book;
+
+/**
+ * Servlet implementation class BookServlet
+ */
+@WebServlet("/BookServlet")
+@MultipartConfig
+public class BookServlet extends HttpServlet {
+	Map<Integer, Book> books = new HashMap<Integer, Book>();
+	int id = 1;
+	
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BookServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		String index = request.getParameter("index");
+		String isbn = request.getParameter("isbn");
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String publisher = request.getParameter("publisher");
+		String price = request.getParameter("price");
+		
+		books.put(Integer.parseInt(index), 
+				new Book(Integer.parseInt(index), isbn, title, author, publisher, price));
+		System.out.println(books);
+	}
+
+}

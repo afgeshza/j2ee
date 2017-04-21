@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;JSF-Example&apos; to &apos;JSF&apos;" description="Rename resource &apos;JSF-Example&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/JSF-Example" name="JSF" stamp="1492760271812" updateReferences="true"/>
+</session>

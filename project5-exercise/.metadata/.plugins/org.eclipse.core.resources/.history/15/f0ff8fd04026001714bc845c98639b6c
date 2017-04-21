@@ -1,0 +1,64 @@
+package servletPackage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+
+import info.Info;
+import student.Student;
+
+/**
+ * Servlet implementation class StudentServlet
+ */
+@WebServlet("/StudentServlet")
+@MultipartConfig
+public class StudentServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	ArrayList<Student> students = new ArrayList<Student>();
+	int index;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public StudentServlet() {
+        // TODO Auto-generated constructor stub
+    	this.index = 1;
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/StudentForm.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("/StudentForm.jsp").forward(request, response);
+		Gson gson = new Gson();
+		
+		String name = request.getParameter("name");
+		request.getSession().setAttribute("name", name);
+		request.getSession().setAttribute("id", this.index);
+		
+		if (name != null) {
+			this.students.add(new Student(name, this.index));
+			this.index++;
+			System.out.println(gson.toJson(this.students));
+		}
+	}
+
+}

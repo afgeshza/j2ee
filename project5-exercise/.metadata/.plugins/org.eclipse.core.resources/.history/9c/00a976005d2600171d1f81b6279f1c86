@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Book CRUD</title>
+</head>
+<body>
+	<form>
+	
+		<h1>Add Book</h1>
+		
+		<table>
+			<tr>
+				<td><label for="isbn">ISBN	: </label></td>
+				<td><input type="text" name="isbn" id="isbn"></input></td>
+			</tr>
+			<td>
+				<tr><label for="isbn">Title	: </label></tr>
+				<tr><input type="text" name="title" id="title"></input></tr>
+			</td>
+			<td>
+				<tr><label for="isbn">Author	: </label></tr>
+				<tr><input type="text" name="author" id="author"></input></tr>
+			</td>
+			<td>
+				<tr><label for="isbn">Publisher	: </label></tr>
+				<tr><input type="text" name="publisher" id="publisher"></input></tr>
+			</td>
+			<td>
+				<tr><label for="isbn">Price	: </label></tr>
+				<tr><input type="text" name="price" id="price"></input></tr>
+			</td>
+			<td>
+				<tr></tr>
+				<tr>
+					<button type="submit">add</button>
+					<button>reset</button>
+				</tr>
+			</td>
+		</table>
+	
+	</form>
+</body>
+</html>
